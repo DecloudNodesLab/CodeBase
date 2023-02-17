@@ -9,7 +9,7 @@ wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz && tar -C /usr/local -xzf go1
 PATH=$PATH:/usr/local/go/bin
 echo $PATH
 go version
-sleep 20
+sleep 2
 echo 'export PATH='$PATH:/usr/local/go/bin >> /root/.bashrc
 go version
 if [[ -n $SSH_PASS ]] # Если задана переменная SSH_PASS - включаем службу SSH
