@@ -58,7 +58,7 @@ fi
 echo $BINARY && echo 'export BINARY='${BINARY} >> /root/.bashrc && $BINARY version
 
 # Часть 4 Конфигурирование
-$BINARY init "$MONIKER" --chain-id $CHAIN  && sleep 5 && FOLDER=.`echo $BINARY | sed "s/d//"`
+$BINARY init "$MONIKER" --chain-id $CHAIN  && sleep 5 && FOLDER=.`echo $BINARY | sed "s/d$//"`
 if [[ -n ${RPC} ]] && [[ -z ${GENESIS} ]]
 then 
 	rm /root/$FOLDER/config/genesis.json
