@@ -191,19 +191,19 @@ then
   done
 fi
 echo =Run node...= 
-mkdir /root/.$BINARY/log    
-cat > /root/.$BINARY/run <<EOF 
+mkdir -p /root/$BINARY/log    
+cat > /root/$BINARY/run <<EOF 
 #!/bin/bash
 exec 2>&1
-exec $BINARY start --home /root/.$BINARY
+exec $BINARY start
 EOF
 mkdir /tmp/log/
-cat > /root/.$BINARY/log/run <<EOF 
+cat > /root/$BINARY/log/run <<EOF 
 #!/bin/bash
 exec svlogd -tt /tmp/log/
 EOF
-chmod +x /root/.$BINARY/log/run && chmod +x /root/.$BINARY/run 
-ln -s /root/.$BINARY /etc/service && ln -s /tmp/log/current /LOG
+chmod +x /root/$BINARY/log/run /root/$BINARY/run 
+ln -s /root/$BINARY /etc/service && ln -s /tmp/log/current /LOG
 sleep 20
 for ((;;))
   do    
