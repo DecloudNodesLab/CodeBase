@@ -62,11 +62,11 @@ fi
 echo $BINARY && echo 'export BINARY='${BINARY} >> /root/.bashrc && $BINARY version
 
 # Часть 4 Конфигурирование
-$BINARY init "$MONIKER" --chain-id $CHAIN --home /root/$BINARY && sleep 5
+$BINARY init "$MONIKER" --chain-id $CHAIN --home /root/.$BINARY && sleep 5
 if [[ -n ${RPC} ]] && [[ -z ${GENESIS} ]]
 then 
-	rm /root/$BINARY/config/genesis.json
-	curl -s "$RPC"/genesis | jq .result.genesis >> /root/$BINARY/config/genesis.json
+	rm /root/.$BINARY/config/genesis.json
+	curl -s "$RPC"/genesis | jq .result.genesis >> /root/.$BINARY/config/genesis.json
 	if [[ -z $DENOM ]]
 	then
 		DENOM=`curl -s "$RPC"/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && 	echo 'export DENOM='${DENOM} >> /root/.bashrc
@@ -76,15 +76,15 @@ if [[ -n $GENESIS ]]
 then	
 	if echo $GENESIS | grep tar
 	then
-		rm /root/$BINARY/config/genesis.json && mkdir /tmp/genesis/
+		rm /root/.$BINARY/config/genesis.json && mkdir /tmp/genesis/
 		wget -O /tmp/genesis.tar.gz $GENESIS && tar -C /tmp/genesis/ -xf /tmp/genesis.tar.gz
-		rm /tmp/genesis.tar.gz && mv /tmp/genesis/`ls /tmp/genesis/` /root/$BINARY/config/genesis.json		
+		rm /tmp/genesis.tar.gz && mv /tmp/genesis/`ls /tmp/genesis/` /root/.$BINARY/config/genesis.json		
 		if [[ -z $DENOM ]]
 		then
 			DENOM=`curl -s "$RPC"/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc
 		fi
 	else
-		rm /root/$BINARY/config/genesis.json && wget -O $HOME/$BINARY/config/genesis.json $GENESIS
+		rm /root/.$BINARY/config/genesis.json && wget -O /root/.$BINARY/config/genesis.json $GENESIS
 		if [[ -z $DENOM ]]
 		then
 			DENOM=`curl -s "$RPC"/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc
@@ -97,12 +97,12 @@ if [[ -n $SNAPSHOT ]]
 then
 echo == Download snapshot ==
 echo = Скачивание снепшота =
-cp $HOME/$BINARY/data/priv_validator_state.json $HOME/$BINARY/priv_validator_state.json.backup 
-$BINARY tendermint unsafe-reset-all --home $HOME/$BINARY --keep-addr-book 
-curl $SNAPSHOT | lz4 -dc - | tar -xf - -C $HOME/$BINARY
+cp /root/.$BINARY/data/priv_validator_state.json /root/.$BINARY/priv_validator_state.json.backup 
+$BINARY tendermint unsafe-reset-all --home /root/.$BINARY --keep-addr-book 
+curl $SNAPSHOT | lz4 -dc - | tar -xf - -C /root/.$BINARY
 echo == Complited ==
 echo == Завершено ==
-mv $HOME/$BINARY/priv_validator_state.json.backup $HOME/$BINARY/data/priv_validator_state.json
+mv /root/.$BINARY/priv_validator_state.json.backup /root/.$BINARY/data/priv_validator_state.json
 fi
 if [[ -n ${RPC} ]] && [[  -z "$PEERS" ]]
 then
@@ -126,13 +126,13 @@ done
 echo "Search peers is complete!" && PEERS=`cat /tmp/PEERS.txt | sed 's/,$//'`
 fi
 echo $PEERS && echo $SEEDS
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$DENOM\"/;" /root/$BINARY/config/app.toml
-sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 15/;" /root/$BINARY/config/config.toml
-sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/;" /root/$BINARY/config/config.toml
-sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|;" /root/$BINARY/config/config.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$DENOM\"/;" /root/.$BINARY/config/app.toml
+sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 15/;" /root/.$BINARY/config/config.toml
+sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/;" /root/.$BINARY/config/config.toml
+sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|;" /root/.$BINARY/config/config.toml
 if [[ -z $DISABLE_RPC ]]
 then
-sed -i.bak -e "s_"tcp://127.0.0.1:26657"_"tcp://0.0.0.0:26657"_;" /root/$BINARY/config/config.toml
+sed -i.bak -e "s_"tcp://127.0.0.1:26657"_"tcp://0.0.0.0:26657"_;" /root/.$BINARY/config/config.toml
 fi
 if [[ -z $PRUNING ]]
 then
@@ -140,15 +140,15 @@ then
 	then
 	KEEP_RECENT=1000 && INTERVAL=10
 	fi
-sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /root/$BINARY/config/app.toml && \
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/$BINARY/config/app.toml && \
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/$BINARY/config/app.toml
+sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /root/.$BINARY/config/app.toml && \
+sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/.$BINARY/config/app.toml && \
+sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/.$BINARY/config/app.toml
 fi
 if [[ -z $SNAPSHOT_INTERVAL ]]
 then
 SNAPSHOT_INTERVAL="2000" 
 fi
-sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$SNAPSHOT_INTERVAL\"/" /root/$BINARY/config/app.toml
+sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$SNAPSHOT_INTERVAL\"/" /root/.$BINARY/config/app.toml
 
 # ====================RPC======================
 if [[ -n ${RPC} ]] && [[ -z $STATE_SYNC ]]
@@ -162,19 +162,19 @@ then
 	sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
 	s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$RPC\"| ; \
 	s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-	s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" /root/$BINARY/config/config.toml
+	s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" /root/.$BINARY/config/config.toml
 fi
 #================================================
 
 if [[ -n ${VALIDATOR_KEY_JSON_BASE64} ]]
 then
-echo $VALIDATOR_KEY_JSON_BASE64 | base64 -d > /root/$BINARY/config/priv_validator_key.json
+echo $VALIDATOR_KEY_JSON_BASE64 | base64 -d > /root/.$BINARY/config/priv_validator_key.json
 fi
 
 # Часть 5 Запуск
 if [[ -n ${RPC} ]]
 then
-  HEX=`cat /root/$BINARY/config/priv_validator_key.json | jq -r .address`
+  HEX=`cat /root/.$BINARY/config/priv_validator_key.json | jq -r .address`
   COUNT=15 && CHECKING_BLOCK=`curl -s $RPC/abci_info? | jq -r .result.response.last_block_height`
   while [[ $COUNT -gt 0 ]]
   do
@@ -190,19 +190,20 @@ then
     let COUNT=$COUNT-1 && let CHECKING_BLOCK=$CHECKING_BLOCK-1 && sleep 1
   done
 fi
-echo =Run node...= && mkdir /root/$BINARY/log    
-cat > /root/$BINARY/run <<EOF 
+echo =Run node...= 
+mkdir /root/.$BINARY/log    
+cat > /root/.$BINARY/run <<EOF 
 #!/bin/bash
 exec 2>&1
-exec $BINARY start --home /root/$BINARY
+exec $BINARY start --home /root/.$BINARY
 EOF
 mkdir /tmp/log/
-cat > /root/$BINARY/log/run <<EOF 
+cat > /root/.$BINARY/log/run <<EOF 
 #!/bin/bash
 exec svlogd -tt /tmp/log/
 EOF
-chmod +x /root/$BINARY/log/run && chmod +x /root/$BINARY/run 
-ln -s /root/$BINARY /etc/service && ln -s /tmp/log/current /LOG
+chmod +x /root/.$BINARY/log/run && chmod +x /root/.$BINARY/run 
+ln -s /root/.$BINARY /etc/service && ln -s /tmp/log/current /LOG
 sleep 20
 for ((;;))
   do    
