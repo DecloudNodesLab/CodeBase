@@ -37,11 +37,15 @@ echo 'export GENESIS='${GENESIS} >> /root/.bashrc
 # Часть 3 Компиляция
 if [[ -n $BINARY_LINK ]]
 then
+	if [[ -z $BINARY ]]
+	then
+		BINARY=serviced
+	fi
 	if echo $BINARY_LINK | grep tar
 	then
-	wget -O /tmp/$BINARY.tar.gz $BINARY_LINK && tar -xvf /tmp/$BINARY.tar.gz -C /usr/bin/
+		wget -O /tmp/$BINARY.tar.gz $BINARY_LINK && tar -xvf /tmp/$BINARY.tar.gz -C /usr/bin/
 	else
-	wget -O /usr/bin/$BINARY $BINARY_LINK
+		wget -O /usr/bin/$BINARY $BINARY_LINK
 	fi
 else
 	GIT_FOLDER=`basename $GITHUB_REPOSITORY | sed "s/.git//"`
