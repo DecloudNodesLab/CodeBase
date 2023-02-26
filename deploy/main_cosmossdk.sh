@@ -17,15 +17,15 @@ then
 apt install -y ssh
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && (echo ${SSH_PASS}; echo ${SSH_PASS}) | passwd root && service ssh restart
 fi
-# Часть 2 Переменые
+# Часть 2 Переменные
 
 if [[ -n $RPC ]]
 then
 	if [[ -z $CHAIN ]]
 	then
-	CHAIN=`curl -s $RPC/status | jq -r .result.node_info.network`
-	curl -s $RPC/status | jq -r .result.node_info.network
-	echo $CHAIN  && sleep 5 
+		CHAIN=`curl -s $RPC/status | jq -r .result.node_info.network`
+		curl -s $RPC/status | jq -r .result.node_info.network
+		echo $CHAIN  && sleep 5 
 	fi
 	if [[ -z $BINARY_VERSION ]]
 	then
