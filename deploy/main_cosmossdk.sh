@@ -11,7 +11,6 @@ echo $PATH
 go version
 sleep 2
 echo 'export PATH='$PATH:/usr/local/go/bin >> /root/.bashrc
-go version
 if [[ -n $SSH_PASS ]] # Если задана переменная SSH_PASS - включаем службу SSH
 then 
 apt install -y ssh
@@ -24,8 +23,6 @@ then
 	if [[ -z $CHAIN ]]
 	then
 		CHAIN=`curl -s $RPC/status | jq -r .result.node_info.network`
-		curl -s $RPC/status | jq -r .result.node_info.network
-		echo $CHAIN  && sleep 5 
 	fi
 	if [[ -z $BINARY_VERSION ]]
 	then
