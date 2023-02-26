@@ -24,6 +24,8 @@ then
 	if [[ -z $CHAIN ]]
 	then
 	CHAIN=`curl -s $RPC/status | jq -r .result.node_info.network`
+	curl -s $RPC/status | jq -r .result.node_info.network
+	echo $CHAIN  && sleep 5 
 	fi
 	if [[ -z $BINARY_VERSION ]]
 	then
