@@ -23,11 +23,11 @@ if [[ -n $RPC ]]
 then
 	if [[ -z $CHAIN ]]
 	then
-	CHAIN=`curl -s "$RPC"/status | jq -r .result.node_info.network`
+	CHAIN=`curl -s $RPC/status | jq -r .result.node_info.network`
 	fi
 	if [[ -z $BINARY_VERSION ]]
 	then
-		BINARY_VERSION=`curl -s "$RPC"/abci_info | jq -r .result.response.version`
+		BINARY_VERSION=`curl -s $RPC/abci_info | jq -r .result.response.version`
 	fi
 fi
 echo 'export MONIKER='${MONIKER} >> /root/.bashrc
@@ -68,10 +68,10 @@ fi
 if [[ -n ${RPC} ]] && [[ -z ${GENESIS} ]]
 then 
 	rm /root/$FOLDER/config/genesis.json
-	curl -s "$RPC"/genesis | jq .result.genesis >> /root/$FOLDER/config/genesis.json
+	curl -s $RPC/genesis | jq .result.genesis >> /root/$FOLDER/config/genesis.json
 	if [[ -z $DENOM ]]
 	then
-		DENOM=`curl -s "$RPC"/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && 	echo 'export DENOM='${DENOM} >> /root/.bashrc
+		DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && 	echo 'export DENOM='${DENOM} >> /root/.bashrc
 	fi
 fi
 if [[ -n $GENESIS ]]
@@ -83,13 +83,13 @@ then
 		rm /tmp/genesis.tar.gz && mv /tmp/genesis/`ls /tmp/genesis/` /root/$FOLDER/config/genesis.json		
 		if [[ -z $DENOM ]]
 		then
-			DENOM=`curl -s "$RPC"/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc
+			DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc
 		fi
 	else
 		rm /root/$FOLDER/config/genesis.json && wget -O /root/$FOLDER/config/genesis.json $GENESIS
 		if [[ -z $DENOM ]]
 		then
-			DENOM=`curl -s "$RPC"/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc
+			DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc
 		fi
 	fi
 fi
