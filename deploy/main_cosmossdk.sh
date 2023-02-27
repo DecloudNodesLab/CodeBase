@@ -54,6 +54,7 @@ else
 		cp /root/go/bin/$BINARY /usr/bin/$BINARY
 	fi
 fi
+sleep 3
 chmod +x /usr/bin/$BINARY
 echo $BINARY && echo 'export BINARY='${BINARY} >> /root/.bashrc && $BINARY version
 
