@@ -106,6 +106,7 @@ curl $SNAPSHOT | lz4 -dc - | tar -xf - -C /root/$FOLDER
 echo == Complited ==
 echo == Завершено ==
 mv /root/$FOLDER/priv_validator_state.json.backup /root/$FOLDER/data/priv_validator_state.json
+STATE_SYNC=off
 fi
 if [[ -n ${RPC} ]] && [[  -z "$PEERS" ]]
 then
