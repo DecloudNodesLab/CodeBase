@@ -5,7 +5,11 @@
 TZ=Europe/Kiev && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-cli
 runsvdir -P /etc/service &
-wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz
+if [[ -z GO_VERSION ]]
+then
+GO_VERSION="1.20.1"
+fi
+wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz
 PATH=$PATH:/usr/local/go/bin
 echo $PATH
 go version
