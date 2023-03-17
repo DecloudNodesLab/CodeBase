@@ -5,7 +5,7 @@
 TZ=Europe/Kiev && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-cli
 runsvdir -P /etc/service &
-if [[ -z GO_VERSION ]]
+if [[ -z $GO_VERSION ]]
 then
 GO_VERSION="1.20.1"
 fi
