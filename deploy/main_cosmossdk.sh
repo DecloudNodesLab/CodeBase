@@ -1,4 +1,5 @@
 # Telegram @Dimokus
+# Discord Dimokus#1032
 # 2023
 #!/bin/bash
 # Часть 1 Установка ПО
