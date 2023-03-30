@@ -20,6 +20,14 @@ then
 apt install -y ssh
 echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && (echo ${SSH_PASS}; echo ${SSH_PASS}) | passwd root && service ssh restart
 fi
+if [[ -n $SSH_KEY ]]
+then
+apt install -y ssh
+echo $SSH_KEY > /root/.ssh/authorized_keys
+chmod 0600 /root/.ssh/authorized_keys
+service ssh restart
+fi
+
 # Часть 2 Переменные
 
 if [[ -n $RPC ]]
