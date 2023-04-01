@@ -4,7 +4,12 @@
 #!/bin/bash
 # Часть 1 Установка ПО
 TZ=Europe/Kiev && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+if [[ -z $BINARY_LINK ]]
+then
 apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-cli
+else
+apt install -y nano tar wget lz4 zip jq runit
+fi
 runsvdir -P /etc/service &
 if [[ -z $GO_VERSION ]]
 then
