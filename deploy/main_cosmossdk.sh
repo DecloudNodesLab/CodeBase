@@ -120,7 +120,9 @@ echo == Download snapshot ==
 echo = Скачивание снепшота =
 cp /root/$FOLDER/data/priv_validator_state.json /root/$FOLDER/priv_validator_state.json.backup 
 $BINARY tendermint unsafe-reset-all --keep-addr-book 
-curl $SNAPSHOT | lz4 -dc - | tar -xf - -C /root/$FOLDER
+SIZE=`wget --spider $SNAPSHOT 2>&1 | awk '/Length/ {print $2}'`
+echo == Download snapshot ==
+(wget -nv -O - $SNAPSHOT | pv -petrafb -s $SIZE -i 5 | lz4 -dc - | tar -xf - -C /root/$FOLDER) 2>&1 | stdbuf -o0 tr '\r' '\n'
 echo == Complited ==
 echo == Завершено ==
 mv /root/$FOLDER/priv_validator_state.json.backup /root/$FOLDER/data/priv_validator_state.json
