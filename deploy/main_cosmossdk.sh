@@ -4,7 +4,7 @@
 #!/bin/bash
 # Часть 1 Установка ПО
 TZ=Europe/Kiev && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-cli pv golang-go unzip
+apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-cli pv unzip
 runsvdir -P /etc/service &
 if [[ -z $GO_VERSION ]]
 then
