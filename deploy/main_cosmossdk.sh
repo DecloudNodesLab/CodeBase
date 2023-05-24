@@ -155,16 +155,25 @@ if [[ -z $DISABLE_RPC ]]
 then
 sed -i.bak -e "s_"tcp://127.0.0.1:26657"_"tcp://0.0.0.0:26657"_;" /root/$FOLDER/config/config.toml
 fi
+if [[ -z $KEEP_RECENT ]] || [[ -z $INTERVAL ]]
+then
+KEEP_RECENT=1000 && INTERVAL=10
+fi
 if [[ -z $PRUNING ]]
 then
-	if [[ -z $KEEP_RECENT ]] || [[ -z $INTERVAL ]]
-	then
-	KEEP_RECENT=1000 && INTERVAL=10
-	fi
-sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /root/$FOLDER/config/app.toml && \
-sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/$FOLDER/config/app.toml && \
-sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/$FOLDER/config/app.toml
+  sed -i -e "s/^pruning *=.*/pruning = \"custom\"/" /root/$FOLDER/config/app.toml && \
+  sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/$FOLDER/config/app.toml && \
+  sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/$FOLDER/config/app.toml
+else
+  sed -i -e "s/^pruning *=.*/pruning = \"$PRUNING\"/" /root/$FOLDER/config/app.toml && \
+  sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/$FOLDER/config/app.toml && \
+  sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/$FOLDER/config/app.toml
 fi
+if [[ -z $INDEXER ]]
+then
+INDEXER=kv
+fi
+sed -i -e "s/^indexer *=.*/indexer = \"$INDEXER\"/" /root/$FOLDER/config/config.toml
 if [[ -z $SNAPSHOT_INTERVAL ]]
 then
 SNAPSHOT_INTERVAL="2000" 
