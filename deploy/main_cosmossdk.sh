@@ -21,7 +21,15 @@ echo 'export MONIKER='${MONIKER} >> /root/.bashrc ; echo 'export BINARY_VERSION=
 # Часть 3 Компиляция
 if [[ -n $BINARY_LINK ]]
 then
-	if echo $BINARY_LINK | grep tar ; then wget -O /tmp/$BINARY.tar.gz $BINARY_LINK && tar -xvf /tmp/$BINARY.tar.gz -C /usr/bin/ ; else wget -O /usr/bin/$BINARY $BINARY_LINK ; fi
+	if echo $BINARY_LINK | grep tar 
+	then 
+	  wget -O /tmp/$BINARY.tar.gz $BINARY_LINK && tar -xvf /tmp/$BINARY.tar.gz -C /usr/bin/ 
+	elif echo $BINARY_LINK | grep zip 
+	then 
+	  wget -O /tmp/$BINARY.zip $BINARY_LINK && unzip /tmp/$BINARY.zip -d /usr/bin/ 
+	else 
+	  wget -O /usr/bin/$BINARY $BINARY_LINK
+	fi
 else
 	GIT_FOLDER=`basename $GITHUB_REPOSITORY | sed "s/.git//"` && git clone $GITHUB_REPOSITORY && cd $GIT_FOLDER && git checkout $BINARY_VERSION 
 	make build && make install
