@@ -26,7 +26,8 @@ then
 	  wget -O /tmp/$BINARY.tar.gz $BINARY_LINK && tar -xvf /tmp/$BINARY.tar.gz -C /usr/bin/ 
 	elif echo $BINARY_LINK | grep zip 
 	then 
-	  wget -O /tmp/$BINARY.zip $BINARY_LINK && unzip /tmp/$BINARY.zip -d /usr/bin/$BINARY 
+	  ARCHIVE_NAME=`basename $BINARY_LINK | sed "s/.zip//"`
+	  wget -O /tmp/$BINARY.zip $BINARY_LINK && unzip /tmp/$BINARY.zip && mv ./$ARCHIVE_NAME /usr/bin/$BINARY
 	else 
 	  wget -O /usr/bin/$BINARY $BINARY_LINK
 	fi
