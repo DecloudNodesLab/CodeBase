@@ -8,6 +8,7 @@ apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-
 runsvdir -P /etc/service &
 if [[ -z $GO_VERSION ]]; then GO_VERSION="1.20.1"; fi
 wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz
+wget -O /usr/lib https://github.com/CosmWasm/wasmvm/releases/download/v1.2.3/libwasmvm.x86_64.so
 PATH=$PATH:/usr/local/go/bin && go version && echo 'export PATH='$PATH:/usr/local/go/bin >> /root/.bashrc
 if [[ -n $SSH_PASS ]] ; then apt install -y ssh; echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && (echo ${SSH_PASS}; echo ${SSH_PASS}) | passwd root && service ssh restart; fi
 if [[ -n $SSH_KEY ]] ; then apt install -y ssh && echo $SSH_KEY > /root/.ssh/authorized_keys; chmod 0600 /root/.ssh/authorized_keys && service ssh restart; fi
