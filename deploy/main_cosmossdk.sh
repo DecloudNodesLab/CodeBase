@@ -18,6 +18,7 @@ then
 	if [[ -z $CHAIN ]] ; then CHAIN=`curl -s $RPC/status | jq -r .result.node_info.network`; fi
 	if [[ -z $BINARY_VERSION ]] ; then BINARY_VERSION=`curl -s $RPC/abci_info | jq -r .result.response.version` ; fi
 fi
+echo 'export CHAIN='${CHAIN} >> /root/.bashrc
 echo 'export MONIKER='${MONIKER} >> /root/.bashrc ; echo 'export BINARY_VERSION='${BINARY_VERSION} >> /root/.bashrc ; echo 'export CHAIN='${CHAIN} >> /root/.bashrc ; echo 'export RPC='${RPC} >> /root/.bashrc ; echo 'export GENESIS='${GENESIS} >> /root/.bashrc
 # Часть 3 Компиляция
 if [[ -n $BINARY_LINK ]]
