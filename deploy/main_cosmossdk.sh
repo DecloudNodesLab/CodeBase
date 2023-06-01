@@ -113,7 +113,7 @@ else
   sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/$FOLDER/config/app.toml && \
   sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/$FOLDER/config/app.toml
 fi
-if [[ -n $DISABLE_FASTNODE ]] ; then sed -i.bak -e "s/^iavl-disable-fastnode = false/iavl-disable-fastnode = true/" /root/$FOLDER/config/app.toml fi 
+if [[ -n $DISABLE_FASTNODE ]] ; then sed -i.bak -e "s/^iavl-disable-fastnode = false/iavl-disable-fastnode = true/" /root/$FOLDER/config/app.toml ; fi 
 if [[ -z $INDEXER ]] ; then INDEXER=kv ; fi
 sed -i -e "s/^indexer *=.*/indexer = \"$INDEXER\"/" /root/$FOLDER/config/config.toml
 if [[ -z $SNAPSHOT_INTERVAL ]] ; then SNAPSHOT_INTERVAL="2000" ; fi
