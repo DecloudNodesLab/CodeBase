@@ -63,6 +63,7 @@ then
 		if [[ -z $DENOM ]] ; then DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc ; fi
 	fi
 fi
+echo 'export DENOM='${DENOM} >> /root/.bashrc
 echo $DENOM && sleep 1
 if [[ -n $SNAPSHOT ]]
 then
