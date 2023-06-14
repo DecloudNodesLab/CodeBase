@@ -1,4 +1,4 @@
-#Running this script: nohup sh -c 'curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh | BINARY_LINK= UPDATE_BLOCK_NUMBER= BINARY= bash' & sleep 1 ; tail -f nohup.out
+#Running this script: nohup sh -c 'curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh | BINARY_LINK= UPDATE_BLOCK_NUMBER= BINARY= bash' & tail -f /root/nohup.out
 
 #!/bin/bash
 if [[ -z $BINARY_LINK ]] || [{ -z $UPDATE_BLOCK_NUMBER ]] || [[ -z $BINARY ]]
@@ -18,6 +18,8 @@ mkdir /root/update
 	else 
 	  wget -O /root/update/$BINARY $BINARY_LINK
 	fi
+echo "New version $BINARY:"
+/root/update/$BINARY version && sleep 5
 UPDATE_PATH=/root/update
 TEXT="$BINARY auto-update feature enabled on $UPDATE_BLOCK_NUMBER block!"
 echo $TEXT
