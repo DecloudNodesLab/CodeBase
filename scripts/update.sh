@@ -17,7 +17,7 @@ LATEST_BLOCK=`curl -s localhost:26657/block | jq -r .result.block.last_commit.he
 while true
 do
 BLOCK_COUNTER=$((UPDATE_BLOCK_NUMBER-LATEST_BLOCK))
-TEXT="До обновления осталось $BLOCK_COUNTER блоков"
+TEXT="$BLOCK_COUNTER blocks left before update"
 echo $TEXT
 	if [[ $LATEST_BLOCK -ge $UPDATE_BLOCK_NUMBER ]]
 	then
