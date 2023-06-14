@@ -1,4 +1,4 @@
-#Running this script: nohup curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh BINARY_LINK= UPDATE_BLOCK_NUMBER= SERVICE= | bash & ; sleep 1 ; tail -f ./nohup.out
+#Running this script: nohup sh -c 'curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh | BINARY_LINK= UPDATE_BLOCK_NUMBER= SERVICE= bash' & sleep 1 ; tail -f nohup.out
 
 #!/bin/bash
 if [[ -z $BINARY_LINK ]] || [{ -z $UPDATE_BLOCK_NUMBER ]] || [[ -z $SERVICE ]]
