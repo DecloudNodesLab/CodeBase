@@ -10,7 +10,7 @@ fi
 mkdir /root/update
 	if echo $BINARY_LINK | grep tar 
 	then 
-	  wget -O /root/update/$BINARY.tar.gz $BINARY_LINK && tar -xvf /root/update/$BINARY.tar.gz
+	  wget -O /root/update/$BINARY.tar.gz $BINARY_LINK && tar -xvf /root/update/$BINARY.tar.gz -C /root/update/ 
 	elif echo $BINARY_LINK | grep zip 
 	then 
 	  ARCHIVE_NAME=`basename $BINARY_LINK | sed "s/.zip//"`
