@@ -1,18 +1,27 @@
-#Running this script: nohup sh -c 'curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh | BINARY_LINK= UPDATE_BLOCK_NUMBER= SERVICE= bash' & sleep 1 ; tail -f nohup.out
+#Running this script: nohup sh -c 'curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh | BINARY_LINK= UPDATE_BLOCK_NUMBER= BINARY= bash' & sleep 1 ; tail -f nohup.out
 
 #!/bin/bash
-if [[ -z $BINARY_LINK ]] || [{ -z $UPDATE_BLOCK_NUMBER ]] || [[ -z $SERVICE ]]
+if [[ -z $BINARY_LINK ]] || [{ -z $UPDATE_BLOCK_NUMBER ]] || [[ -z $BINARY ]]
 then
-echo "Error! Required variables not set! Check: BINARY_LINK, UPDATE_BLOCK_NUMBER, SERVICE."
+echo "Error! Required variables not set! Check: BINARY_LINK, UPDATE_BLOCK_NUMBER, BINARY."
 echo "Launch cancel!"
 exit
 fi
 mkdir /root/update
-wget -O /root/update/$SERVICE $BINARY_LINK && chmod +x /root/update/$SERVICE
+	if echo $BINARY_LINK | grep tar 
+	then 
+	  wget -O /root/update/$BINARY.tar.gz $BINARY_LINK && tar -xvf /root/update/$BINARY.tar.gz
+	elif echo $BINARY_LINK | grep zip 
+	then 
+	  ARCHIVE_NAME=`basename $BINARY_LINK | sed "s/.zip//"`
+	  wget -O /root/update/$BINARY.zip $BINARY_LINK && unzip /root/update/$BINARY.zip
+	else 
+	  wget -O /root/update/$BINARY $BINARY_LINK
+	fi
 UPDATE_PATH=/root/update
-TEXT="$SERVICE auto-update feature enabled on $UPDATE_BLOCK_NUMBER block!"
+TEXT="$BINARY auto-update feature enabled on $UPDATE_BLOCK_NUMBER block!"
 echo $TEXT
-FOLDER=."$SERVICE"
+FOLDER=."$BINARY"
 LATEST_BLOCK=`curl -s localhost:26657/block | jq -r .result.block.last_commit.height`
 while true
 do
@@ -24,12 +33,12 @@ echo $TEXT
 		sleep 10
 		TEXT="Update Block Reached! Starting the update process!"
 		echo $TEXT
-		sv stop $SERVICE
-		chmod +x /root/update/$SERVICE
-		mv /usr/bin/$SERVICE /tmp/$SERVICE
-		mv /root/update/$SERVICE /usr/bin/$SERVICE
+		sv stop $BINARY
+		chmod +x /root/update/$BINARY
+		mv /usr/bin/$BINARY /tmp/$BINARY
+		mv /root/update/$BINARY /usr/bin/$BINARY
 		sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 0/;" /root/$FOLDER/config/config.toml
-		sv start $SERVICE
+		sv start $BINARY
 		TEXT="Update completed! Check the signature in the block explorer https://explorer.declab.pro/ !"
 		echo $TEXT
 		exit
