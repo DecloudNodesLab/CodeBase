@@ -3,8 +3,8 @@
 #!/bin/bash
 if [[ -z $BINARY_LINK ]] || [{ -z $UPDATE_BLOCK_NUMBER ]] || [[ -z $SERVICE ]]
 then
-echo "Ошибка! Не заданы необходимые переменные! Проверьте BINARY_LINK, UPDATE_BLOCK_NUMBER, SERVICE."
-echo "Отмена запуска!"
+echo "Error! Required variables not set! Check: BINARY_LINK, UPDATE_BLOCK_NUMBER, SERVICE."
+echo "Launch cancel!"
 exit
 fi
 mkdir /root/update
