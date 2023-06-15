@@ -1,5 +1,3 @@
-#Running this script: nohup sh -c 'curl -s https://raw.githubusercontent.com/DecloudNodesLab/CodeBase/main/scripts/update.sh | BINARY_LINK= UPDATE_BLOCK_NUMBER= BINARY= bash' & sleep 1 ; tail -f /root/nohup.out
-
 #!/bin/bash
 if [[ -z $BINARY_LINK ]] || [{ -z $UPDATE_BLOCK_NUMBER ]] || [[ -z $BINARY ]]
 then
@@ -7,7 +5,7 @@ echo "Error! Required variables not set! Check: BINARY_LINK, UPDATE_BLOCK_NUMBER
 echo "Launch cancel!"
 exit
 fi
-mkdir /root/update
+mkdir /root/update 
 	if echo $BINARY_LINK | grep tar 
 	then 
 	  wget -O /root/update/$BINARY.tar.gz $BINARY_LINK && tar -xvf /root/update/$BINARY.tar.gz -C /root/update/ 
