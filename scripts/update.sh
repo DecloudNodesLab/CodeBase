@@ -14,7 +14,7 @@ mkdir /root/update
 	elif echo $BINARY_LINK | grep zip 
 	then 
 	  ARCHIVE_NAME=`basename $BINARY_LINK | sed "s/.zip//"`
-	  wget -O /root/update/$BINARY.zip $BINARY_LINK && unzip /root/update/$BINARY.zip
+	  wget -O /root/update/$ARCHIVE_NAME $BINARY_LINK && unzip /root/update/$ARCHIVE_NAME
 	else 
 	  wget -O /root/update/$BINARY $BINARY_LINK
 	fi
