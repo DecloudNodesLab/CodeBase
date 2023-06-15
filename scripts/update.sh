@@ -20,6 +20,7 @@ echo "New version $BINARY:"
 /root/update/$BINARY version && sleep 5
 UPDATE_PATH=/root/update
 TEXT="$BINARY auto-update feature enabled on $UPDATE_BLOCK_NUMBER block!"
+UPDATE_BLOCK_NUMBER=$((UPDATE_BLOCK_NUMBER-1))
 echo $TEXT
 FOLDER=."$BINARY"
 LATEST_BLOCK=`curl -s localhost:26657/block | jq -r .result.block.last_commit.height`
