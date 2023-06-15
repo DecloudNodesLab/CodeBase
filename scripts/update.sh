@@ -39,7 +39,6 @@ echo $TEXT
 		chmod +x /root/update/$BINARY
 		mv /usr/bin/$BINARY /tmp/$BINARY
 		mv /root/update/$BINARY /usr/bin/$BINARY
-		sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 0/;" /root/$FOLDER/config/config.toml
 		sv start $BINARY
 		TEXT="Update completed! Check the signature in the block explorer https://explorer.declab.pro/ !"
 		echo $TEXT
