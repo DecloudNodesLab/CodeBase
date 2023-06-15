@@ -47,7 +47,7 @@ chmod +x /usr/bin/$BINARY && echo $BINARY && echo 'export BINARY='${BINARY} >> /
 $BINARY init "$MONIKER" --chain-id $CHAIN  && sleep 1
 
 if [[ -z $FOLDER ]] ; then FOLDER=.`echo $BINARY | sed "s/d$//"` ; fi
-
+echo 'export FOLDER='${FOLDER} >> /root/.bashrc
 if [[ -n ${RPC} ]] && [[ -z ${GENESIS} ]]
 then 
 	rm /root/$FOLDER/config/genesis.json &&	curl -s $RPC/genesis | jq .result.genesis >> /root/$FOLDER/config/genesis.json
