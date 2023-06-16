@@ -51,9 +51,8 @@ echo 'export FOLDER='${FOLDER} >> /root/.bashrc
 if [[ -n ${RPC} ]] && [[ -z ${GENESIS} ]]
 then 
 	rm /root/$FOLDER/config/genesis.json &&	curl -s $RPC/genesis | jq .result.genesis >> /root/$FOLDER/config/genesis.json
-	if [[ -z $DENOM ]] ; then DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ `;	fi
+	if [[ -z $DENOM ]] ; then DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && 	echo 'export DENOM='${DENOM} >> /root/.bashrc ;	fi
 fi
-echo 'export DENOM='${DENOM} >> /root/.bashrc
 if [[ -n $GENESIS ]]
 then	
 	if echo $GENESIS | grep tar
@@ -69,10 +68,42 @@ then
 fi
 echo 'export DENOM='${DENOM} >> /root/.bashrc
 echo $DENOM && sleep 1
+if [[ -n $SNAPSHOT ]]
+then
+cp /root/$FOLDER/data/priv_validator_state.json /root/$FOLDER/priv_validator_state.json.backup && $BINARY tendermint unsafe-reset-all --keep-addr-book 
+SIZE=`wget --spider $SNAPSHOT 2>&1 | awk '/Length/ {print $2}'`
+echo == Download snapshot ==
+(wget -nv -O - $SNAPSHOT | pv -petrafb -s $SIZE -i 5 | lz4 -dc - | tar -xf - -C /root/$FOLDER) 2>&1 | stdbuf -o0 tr '\r' '\n'
+echo == Complited ==
+mv /root/$FOLDER/priv_validator_state.json.backup /root/$FOLDER/data/priv_validator_state.json && STATE_SYNC=off
+fi
+if [[ -n ${RPC} ]] && [[  -z "$PEERS" ]]
+then
+  n_peers=`curl -s $RPC/net_info? | jq -r .result.n_peers` && let n_peers="$n_peers"-1
+  RPC="$RPC" && echo -n "$RPC," >> /tmp/RPC.txt
+  p=0 && count=0 && echo "Search peers..."
+  while [[ "$p" -le  "$n_peers" ]] && [[ "$count" -le 9 ]]
+  do
+	  PEER=`curl -s  $RPC/net_info? | jq -r .result.peers["$p"].node_info.listen_addr`
+    if echo $PEER | grep tcp
+    then
+    	count="$count"+1
+    else
+    	id=`curl -s  $RPC/net_info? | jq -r .result.peers["$p"].node_info.id` && echo -n "$id@$PEER," >> /tmp/PEERS.txt
+	echo $id@$PEER && echo $PEER | sed 's/:/ /g' > /tmp/addr.tmp
+	ADDRESS=(`cat /tmp/addr.tmp`) && ADDRESS=`echo ${ADDRESS[0]}`
+	PORT=(`cat /tmp/addr.tmp`) && PORT=`echo ${PORT[1]}` && count="$count"+1
+   fi
+   p="$p"+1
+done
+echo "Search peers is complete!" && PEERS=`cat /tmp/PEERS.txt | sed 's/,$//'`
+fi
 echo $PEERS && echo $SEEDS
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$DENOM\"/;" /root/$FOLDER/config/app.toml
+sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 15/;" /root/$FOLDER/config/config.toml
 sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/;" /root/$FOLDER/config/config.toml
 sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|;" /root/$FOLDER/config/config.toml
+if [[ -z $DISABLE_RPC ]] ; then sed -i.bak -e "s_"tcp://127.0.0.1:26657"_"tcp://0.0.0.0:26657"_;" /root/$FOLDER/config/config.toml ; fi
 if [[ -z $KEEP_RECENT ]] || [[ -z $INTERVAL ]] ; then KEEP_RECENT=1000 && INTERVAL=10 ; fi
 if [[ -z $PRUNING ]]
 then
@@ -84,14 +115,48 @@ else
   sed -i -e "s/^pruning-keep-recent *=.*/pruning-keep-recent = \"$KEEP_RECENT\"/" /root/$FOLDER/config/app.toml && \
   sed -i -e "s/^pruning-interval *=.*/pruning-interval = \"$INTERVAL\"/" /root/$FOLDER/config/app.toml
 fi
+if [[ -n $DISABLE_FASTNODE ]] ; then sed -i.bak -e "s/^iavl-disable-fastnode = false/iavl-disable-fastnode = true/" /root/$FOLDER/config/app.toml ; fi 
 if [[ -z $INDEXER ]] ; then INDEXER=kv ; fi
 sed -i -e "s/^indexer *=.*/indexer = \"$INDEXER\"/" /root/$FOLDER/config/config.toml
 if [[ -z $SNAPSHOT_INTERVAL ]] ; then SNAPSHOT_INTERVAL="2000" ; fi
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$SNAPSHOT_INTERVAL\"/" /root/$FOLDER/config/app.toml
 
 # ====================RPC======================
+if [[ -n ${RPC} ]] && [[ -z $STATE_SYNC ]]
+then	
+	LATEST_HEIGHT=`curl -s $RPC/block | jq -r .result.block.header.height` 
+	BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)) && BLOCK_HEIGHT=`echo $BLOCK_HEIGHT | sed "s/...$/000/"`
+	TRUST_HASH=$(curl -s "$RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+	echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
+	RPC=`echo $RPC,$RPC` &&	echo $RPC
+	sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+	s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$RPC\"| ; \
+	s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+	s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" /root/$FOLDER/config/config.toml
+fi
 #================================================
+
+if [[ -n ${VALIDATOR_KEY_JSON_BASE64} ]] ; then echo $VALIDATOR_KEY_JSON_BASE64 | base64 -d > /root/$FOLDER/config/priv_validator_key.json ; fi
+
 # Часть 5 Запуск
+if [[ -n ${RPC} ]]
+then
+  HEX=`cat /root/$FOLDER/config/priv_validator_key.json | jq -r .address`
+  COUNT=15 && CHECKING_BLOCK=`curl -s $RPC/abci_info? | jq -r .result.response.last_block_height`
+  while [[ $COUNT -gt 0 ]]
+  do
+    CHEKER=`curl -s $RPC/commit?height=$CHECKING_BLOCK | grep $HEX`
+    if [[ -n $CHEKER  ]]
+    then
+    	echo ++ Защита от двойной подписи!++
+    	echo ++ ВНИМАНИЕ! ОБНАРУЖЕНА ПОДПИСЬ В ВАЛИДАТОРА НА БЛОКЕ № $CHECKING_BLOCK ! ЗАПУСК НОДЫ ОСТАНОВЛЕН! ++
+    	echo ++ Double signature protection!++
+    	echo ++ WARNING! VALIDATOR SIGNATURE DETECTED ON BLOCK № $CHECKING_BLOCK ! NODE LAUNCH HAS BEEN STOPPED! ++
+    	sleep infinity
+    fi
+    let COUNT=$COUNT-1 && let CHECKING_BLOCK=$CHECKING_BLOCK-1 && sleep 1
+  done
+fi
 echo =Run node...= 
 mkdir -p /root/$BINARY/log    
 cat > /root/$BINARY/run <<EOF 
@@ -107,4 +172,4 @@ EOF
 chmod +x /root/$BINARY/log/run /root/$BINARY/run 
 ln -s /root/$BINARY /etc/service && ln -s /tmp/log/current /LOG
 sleep 20
-while true ; do tail -100 /LOG | grep -iv peer && sleep 20 ; done
+while true ; do tail -100 /LOG | grep -iv peer && sleep 10m ; done
