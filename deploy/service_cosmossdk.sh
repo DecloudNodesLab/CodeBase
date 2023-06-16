@@ -38,8 +38,21 @@ else
 	GIT_FOLDER=`basename $GITHUB_REPOSITORY | sed "s/.git//"` && git clone $GITHUB_REPOSITORY && cd $GIT_FOLDER && git checkout $BINARY_VERSION 
 	make build
 	make install
-	BINARY=`ls /root/go/bin`
-	if [[ -z $BINARY ]] ; then BINARY=`ls /root/$GIT_FOLDER/build/` && cp /root/$GIT_FOLDER/build/$BINARY /usr/bin/$BINARY ; else cp /root/go/bin/$BINARY /usr/bin/$BINARY ; fi
+fi
+if [[ -z $BINARY ]]
+then 
+BINARY=`ls /root/$GIT_FOLDER/build/`
+echo Binary name: $BINARY
+	if [[ -z $BINARY ]]
+	then
+	BINARY=`ls /root/go/bin/`
+	echo Binary name: $BINARY
+	else
+	cp /root/$GIT_FOLDER/build/$BINARY /usr/bin/$BINARY
+	fi
+else
+find / -name $BINARY
+cp `find / -name $BINARY` /usr/bin/$BINARY
 fi
 sleep 1
 chmod +x /usr/bin/$BINARY && echo $BINARY && echo 'export BINARY='${BINARY} >> /root/.bashrc && $BINARY version
