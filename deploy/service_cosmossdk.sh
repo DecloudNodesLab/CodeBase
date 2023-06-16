@@ -48,11 +48,11 @@ echo Binary name: $BINARY
 	BINARY=`ls /root/go/bin/`
 	echo Binary name: $BINARY
 	else
-	cp /root/$GIT_FOLDER/build/$BINARY /usr/bin/$BINARY
+	cp /root/$GIT_FOLDER/build/$BINARY /usr/bin/
 	fi
 else
 find / -name $BINARY
-cp `find / -name $BINARY` /usr/bin/$BINARY
+cp `find / -name $BINARY` /usr/bin/
 fi
 sleep 1
 chmod +x /usr/bin/$BINARY && echo $BINARY && echo 'export BINARY='${BINARY} >> /root/.bashrc && $BINARY version
