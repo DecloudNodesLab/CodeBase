@@ -122,21 +122,10 @@ if [[ -z $SNAPSHOT_INTERVAL ]] ; then SNAPSHOT_INTERVAL="2000" ; fi
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$SNAPSHOT_INTERVAL\"/" /root/$FOLDER/config/app.toml
 
 # ====================RPC======================
-if [[ -n ${RPC} ]] && [[ -z $STATE_SYNC ]]
-then	
-	LATEST_HEIGHT=`curl -s $RPC/block | jq -r .result.block.header.height` 
-	BLOCK_HEIGHT=$((LATEST_HEIGHT - 2000)) && BLOCK_HEIGHT=`echo $BLOCK_HEIGHT | sed "s/...$/000/"`
-	TRUST_HASH=$(curl -s "$RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-	echo $LATEST_HEIGHT $BLOCK_HEIGHT $TRUST_HASH
-	RPC=`echo $RPC,$RPC` &&	echo $RPC
-	sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-	s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$RPC\"| ; \
-	s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-	s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" /root/$FOLDER/config/config.toml
-fi
+
 #================================================
 
-if [[ -n ${VALIDATOR_KEY_JSON_BASE64} ]] ; then echo $VALIDATOR_KEY_JSON_BASE64 | base64 -d > /root/$FOLDER/config/priv_validator_key.json ; fi
+
 
 # Часть 5 Запуск
 if [[ -n ${RPC} ]]
