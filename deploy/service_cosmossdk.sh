@@ -88,7 +88,7 @@ if [[ -z $INDEXER ]] ; then INDEXER=kv ; fi
 sed -i -e "s/^indexer *=.*/indexer = \"$INDEXER\"/" /root/$FOLDER/config/config.toml
 if [[ -z $SNAPSHOT_INTERVAL ]] ; then SNAPSHOT_INTERVAL="2000" ; fi
 sed -i.bak -e "s/^snapshot-interval *=.*/snapshot-interval = \"$SNAPSHOT_INTERVAL\"/" /root/$FOLDER/config/app.toml
-sed -i 's/^\[api\]\s*enable\s*=.*/[api]\nenable = true/' /root/$FOLDER/config/app.toml
+
 # ====================RPC======================
 #================================================
 # Часть 5 Запуск
