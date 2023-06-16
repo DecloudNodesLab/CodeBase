@@ -77,27 +77,6 @@ echo == Download snapshot ==
 echo == Complited ==
 mv /root/$FOLDER/priv_validator_state.json.backup /root/$FOLDER/data/priv_validator_state.json && STATE_SYNC=off
 fi
-if [[ -n ${RPC} ]] && [[  -z "$PEERS" ]]
-then
-  n_peers=`curl -s $RPC/net_info? | jq -r .result.n_peers` && let n_peers="$n_peers"-1
-  RPC="$RPC" && echo -n "$RPC," >> /tmp/RPC.txt
-  p=0 && count=0 && echo "Search peers..."
-  while [[ "$p" -le  "$n_peers" ]] && [[ "$count" -le 9 ]]
-  do
-	  PEER=`curl -s  $RPC/net_info? | jq -r .result.peers["$p"].node_info.listen_addr`
-    if echo $PEER | grep tcp
-    then
-    	count="$count"+1
-    else
-    	id=`curl -s  $RPC/net_info? | jq -r .result.peers["$p"].node_info.id` && echo -n "$id@$PEER," >> /tmp/PEERS.txt
-	echo $id@$PEER && echo $PEER | sed 's/:/ /g' > /tmp/addr.tmp
-	ADDRESS=(`cat /tmp/addr.tmp`) && ADDRESS=`echo ${ADDRESS[0]}`
-	PORT=(`cat /tmp/addr.tmp`) && PORT=`echo ${PORT[1]}` && count="$count"+1
-   fi
-   p="$p"+1
-done
-echo "Search peers is complete!" && PEERS=`cat /tmp/PEERS.txt | sed 's/,$//'`
-fi
 echo $PEERS && echo $SEEDS
 sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$DENOM\"/;" /root/$FOLDER/config/app.toml
 sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 15/;" /root/$FOLDER/config/config.toml
