@@ -10,7 +10,7 @@ if [[ -z $GO_VERSION ]]; then GO_VERSION="1.20.1"; fi
 wget https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz && tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz
 if [[ -z $LIBWASMVM_VERSION ]]; then LIBWASMVM_VERSION="v1.2.3"; fi
 wget -P /usr/lib/ https://github.com/CosmWasm/wasmvm/releases/download/$LIBWASMVM_VERSION/libwasmvm.x86_64.so
-PATH=$PATH:/usr/local/go/bin && go version && echo 'export PATH='$PATH:/usr/local/go/bin >> /root/.bashrc
+PATH=$PATH:/usr/local/go/bin:/root/go/bin/ && go version && echo 'export PATH='$PATH:/usr/local/go/bin:/root/go/bin/ >> /root/.bashrc
 if [[ -n $SSH_PASS ]] ; then apt install -y ssh; echo "PermitRootLogin yes" >> /etc/ssh/sshd_config && (echo ${SSH_PASS}; echo ${SSH_PASS}) | passwd root && service ssh restart; fi
 if [[ -n $SSH_KEY ]] ; then apt install -y ssh && echo $SSH_KEY > /root/.ssh/authorized_keys; chmod 0600 /root/.ssh/authorized_keys && service ssh restart; fi
 # Часть 2 Переменные
