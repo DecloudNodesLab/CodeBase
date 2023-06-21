@@ -35,7 +35,6 @@ echo $TEXT
 		TEXT="Update Block Reached! Starting the update process!"
 		echo $TEXT
 		sv stop $BINARY
-		chmod +x /root/update/$BINARY
 		mv /usr/bin/$BINARY /tmp/$BINARY
 		mv /root/update/$BINARY /usr/bin/$BINARY
 		sv start $BINARY
