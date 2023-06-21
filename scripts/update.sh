@@ -17,6 +17,7 @@ mkdir /root/update
 	  wget -O /root/update/$BINARY $BINARY_LINK
 	fi
 echo "New version $BINARY:"
+chmod +x /root/update/$BINARY
 /root/update/$BINARY version && sleep 5
 UPDATE_PATH=/root/update
 TEXT="$BINARY auto-update feature enabled on $UPDATE_BLOCK_NUMBER block!"
