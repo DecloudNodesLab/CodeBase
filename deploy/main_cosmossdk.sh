@@ -30,7 +30,7 @@ then
 	elif echo $BINARY_LINK | grep zip 
 	then 
 	  ARCHIVE_NAME=`basename $BINARY_LINK | sed "s/.zip//"`
-	  wget -O /tmp/$BINARY.zip $BINARY_LINK && unzip /tmp/$BINARY.zip && mv ./$ARCHIVE_NAME /usr/bin/$BINARY
+	  wget -O /tmp/$BINARY.zip $BINARY_LINK && unzip /tmp/$BINARY.zip && mv ./$BINARY /usr/bin/$BINARY
 	else 
 	  wget -O /usr/bin/$BINARY $BINARY_LINK
 	fi
