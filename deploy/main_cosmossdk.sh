@@ -58,8 +58,8 @@ then
 	if echo $GENESIS | grep tar
 	then
 		rm /root/$FOLDER/config/genesis.json && mkdir /tmp/genesis/
-		wget -O /tmp/genesis.tar.gz $GENESIS && tar -C /tmp/genesis/ -xf /tmp/genesis.tar.gz
-		rm /tmp/genesis.tar.gz && mv /tmp/genesis/`ls /tmp/genesis/` /root/$FOLDER/config/genesis.json		
+		wget -O /tmp/genesis/genesis.tar.gz $GENESIS && tar -C /tmp/genesis/ -xf /tmp/genesis/genesis.tar.gz
+		rm /tmp/genesis/genesis.tar.gz && mv /tmp/genesis/`ls /tmp/genesis/` /root/$FOLDER/config/genesis.json		
 		if [[ -z $DENOM ]] ; then DENOM=`curl -s $RPC/genesis | grep denom -m 1 | tr -d \"\, | sed "s/denom://" | tr -d \ ` && echo 'export DENOM='${DENOM} >> /root/.bashrc ; fi
 	else
 		rm /root/$FOLDER/config/genesis.json && wget -O /root/$FOLDER/config/genesis.json $GENESIS
