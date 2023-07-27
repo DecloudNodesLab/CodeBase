@@ -1,5 +1,6 @@
 #!/bin/bash
-sourсe ~/.bashrc
+source ~/.bashrc
+sleep 1
 RPC=localhost:26657
 BL=`curl -s $RPC/block?latest | jq -r .result.block.header.height`
 let BL=$BL-50
