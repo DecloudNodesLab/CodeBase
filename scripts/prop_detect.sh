@@ -20,7 +20,7 @@ sleep 10m
 continue
 elif grep -a MsgSubmitProposal /tmp/txs.txt
 then
-curl -s -H "Content-Type: application/json" -X POST -d '{"content":" ':bangbang:' **'$BINARY'** Alert @everyone !\n':bangbang:'Внимание! Обнаружено новое голосование! \n':bangbang:'**Проверьте сеть!**"}' $WEBHOOKS
+curl -s -H "Content-Type: application/json" -X POST -d '{"content":" ':bangbang:' **'$BINARY'** Alert @everyone !\n':bangbang:'Внимание! Обнаружено новое голосование! \n':bangbang:'**Проверьте сеть!**"}' "$WEBHOOKS"
 let BL=$BL+1
 else
 let BL=$BL+1
