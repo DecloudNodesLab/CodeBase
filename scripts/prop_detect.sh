@@ -3,9 +3,12 @@ source ~/.bashrc
 sleep 2m
 RPC=localhost:26657
 CATCHING_UP=`$BINARY status | jq -r .SyncInfo.catching_up`
+echo $CATCHING_UP
 while [[ $CATCHING_UP == true  ]]
 do
 sleep 1m
+CATCHING_UP=`$BINARY status | jq -r .SyncInfo.catching_up`
+echo $CATCHING_UP
 done
 BL=`curl -s $RPC/block?latest | jq -r .result.block.header.height`
 let BL=$BL-50
