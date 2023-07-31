@@ -3,7 +3,7 @@
 # 2023
 #!/bin/bash
 # Часть 1 Установка ПО
-TZ=Europe/Kiev && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+TZ=Europe/London && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 apt install -y nano tar wget lz4 zip jq runit build-essential git make gcc nvme-cli pv unzip
 runsvdir -P /etc/service &
 if [[ -z $GO_VERSION ]]; then GO_VERSION="1.20.1"; fi
@@ -20,7 +20,7 @@ then
 	if [[ -z $BINARY_VERSION ]] ; then BINARY_VERSION=`curl -s $RPC/abci_info | jq -r .result.response.version` ; fi
 fi
 echo 'export CHAIN='${CHAIN} >> /root/.bashrc
-echo 'export WEBHOOK='${WEBHOOK} >> /root/.bashrc
+echo 'export WEBHOOKS='${WEBHOOKS} >> /root/.bashrc
 echo 'export MONIKER='${MONIKER} >> /root/.bashrc ; echo 'export BINARY_VERSION='${BINARY_VERSION} >> /root/.bashrc ; echo 'export CHAIN='${CHAIN} >> /root/.bashrc ; echo 'export RPC='${RPC} >> /root/.bashrc ; echo 'export GENESIS='${GENESIS} >> /root/.bashrc
 # Часть 3 Компиляция
 if [[ -n $BINARY_LINK ]]
