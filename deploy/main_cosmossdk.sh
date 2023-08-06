@@ -99,7 +99,7 @@ done
 echo "Search peers is complete!" && PEERS=`cat /tmp/PEERS.txt | sed 's/,$//'`
 fi
 echo $PEERS && echo $SEEDS
-sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0.0025$DENOM\"/;" /root/$FOLDER/config/app.toml
+sed -i.bak -e "s/^minimum-gas-prices *=.*/minimum-gas-prices = \"0$DENOM\"/;" /root/$FOLDER/config/app.toml
 sed -i.bak -e "s/^double_sign_check_height *=.*/double_sign_check_height = 15/;" /root/$FOLDER/config/config.toml
 sed -i.bak -e "s/^seeds *=.*/seeds = \"$SEEDS\"/;" /root/$FOLDER/config/config.toml
 sed -i.bak -e "s|^persistent_peers *=.*|persistent_peers = \"$PEERS\"|;" /root/$FOLDER/config/config.toml
