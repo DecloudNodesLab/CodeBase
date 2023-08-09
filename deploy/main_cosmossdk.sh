@@ -190,4 +190,4 @@ EOF
 chmod +x /root/prop_detect/log/run /root/prop_detect/run 
 ln -s /root/prop_detect /etc/service && ln -s /tmp/prop_detect/log/current /PROP
 fi
-while true ; do tail -100 /LOG | grep -iv peer && sleep 10m ; done
+while true ; do tail -f /LOG | grep -iv peer ; done
