@@ -21,7 +21,7 @@ then
 echo Block not create! Sleep 10 min...
 sleep 10m
 continue
-elif grep -a MsgSubmitProposal /tmp/txs.txt
+elif grep -a Proposal /tmp/txs.txt || grep -a proposal /tmp/txs.txt
 then
 curl -s -H "Content-Type: application/json" -X POST -d '{"content":" ':bangbang:' **'$BINARY'** Alert @everyone !\n':bangbang:'Внимание! Обнаружено новое голосование! \n':bangbang:'**Проверьте сеть!**"}' "$WEBHOOKS"
 let BL=$BL+1
