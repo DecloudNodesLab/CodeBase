@@ -3,9 +3,10 @@ MIN=$1
 MAX=$2
 WINNER=$3
 BLOCK=$4
+NODE="https://akash.declab.pro:26601"
 snap(){
 # Получение данных и сохранение их в файл delegations.json
-akash q staking delegations-to akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4 --node https://akash.declab.pro:26601 --output json --limit 3000 --height $BLOCK > ./delegations.json
+akash q staking delegations-to akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4 --node $NODE --output json --limit 3000 --height $BLOCK > ./delegations.json
 
 # Исходный файл
 input_file="./delegations.json"
@@ -54,7 +55,7 @@ exit 0
 TEXT="Победитель будет определен на блоке $BLOCK!"
 ALT_TEXT="The winner will be determined on the $BLOCK block!"
 echo $TEXT $ALT_TEXT
-LATEST_BLOCK=`akash status | jq -r .SyncInfo.latest_block_height`
+LATEST_BLOCK=`akash status --node $NODE | jq -r .SyncInfo.latest_block_height`
 while true
 do
 BLOCK_COUNTER=$((BLOCK-LATEST_BLOCK))
@@ -68,5 +69,5 @@ echo $TEXT $ALT_TEXT
 	fi
 
 sleep 6
-LATEST_BLOCK=`akash status | jq -r .SyncInfo.latest_block_height`
+LATEST_BLOCK=`akash status --node $NODE | jq -r .SyncInfo.latest_block_height`
 done
