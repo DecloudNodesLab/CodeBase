@@ -5,7 +5,7 @@ WINNER=$3
 BLOCK=$4
 snap(){
 # Получение данных и сохранение их в файл delegations.json
-akash q staking delegations-to akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4 --output json --limit 3000 --height $BLOCK > ./delegations.json
+akash q staking delegations-to akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4 --node https://akash.declab.pro:26601 --output json --limit 3000 --height $BLOCK > ./delegations.json
 
 # Исходный файл
 input_file="./delegations.json"
