@@ -1,0 +1,679 @@
+{
+  "delegation_responses": [
+    {
+      "delegation": {
+        "delegator_address": "akash1q22fvnhna2zg2g2xm6s5587w8fvsh2zz83qsa6",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "778000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "778000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1p7pm584humg0l7xru8ks7daqpy0d6gju6vfm6x",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "100000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "100000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1z84z029vu9el7csfjx3exxzuju86hypu36j8je",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "125000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "125000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1z24egc5raypt8y98y7p5mgek5uu0fnuqx7e2ht",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "500000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "500000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1z05s6xu7c4z7s6wxg80ftauxvvszz36l7nmgpy",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "270244258.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "270244258"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1rpz5kk5xfjxcrgx8avzeug6za5uqwdl40fgzcj",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "120000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "120000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1r2weamph0wan725ncx4ljvt8755tljtxd0qylz",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "483000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "483000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1r4vr2alg9w7qawq2kg2z5f82ljtw3tr823qs3y",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "779156884.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "779156884"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1yzym6p00uaxt9jamqczf7v6hmucx99wrg4z6a7",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "575790081.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "575790081"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1y2s3hwg5vgwek5jeqj3f5ks0yshxhr30hppmtn",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "129500000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "129500000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1yjuytljqp2akkcugs45m7mmdupr7m4cevwqjpy",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "132868778.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "132868778"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1ykh63w2p42c4lnaa8c045aamq5nh6t09vp5dgw",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "175000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "175000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1yms4du3fqyajd37895k9cmp52t75tz57ul50pa",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "449220114.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "449220114"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash19g7lluugdp6ug5rdn5vw59rxnp52lgn9z0g4wf",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "377630416.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "377630416"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash19mecrymvr8c8c3hmwuft63ucz8wdsuscx7s6my",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "292842014.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "292842014"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1xvx6wkk053l5ejdxsmjcnfy2wsvf6z82pvhy2h",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "600000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "600000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1xujtdhn03v0n4ng8csm8h2e006e7jsv2khgqdk",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "158000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "158000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1gq9qnkdw7n3vsfa585kadgtvje7ejlh2p0l92t",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "1000000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "1000000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1gznc7aafp602snhll8x4y43me0uhjxkt3sauwf",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "250000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "250000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1f45fu9czvc9zgttgnr6m2gtcytxvmp5ye2whhn",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "376730000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "376730000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1fcu62vlqxjz6fdfzz6pcyl7q93rzh2hze58087",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "283581363.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "283581363"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash12ce0qesr9cucxqvu09q36p6zfqm5f6zurgyprr",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "499000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "499000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1t8f0y8daqepm64mul3h8y630cl0ral8ylplreh",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "212593827.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "212593827"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1vz0728he49v6umn7khl2erse4w3rrzare8s8mk",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "244000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "244000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1v9s7vyqlecar5d7uywyhgepvug2yue5as6h8nx",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "105765819.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "105765819"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1dxs9j375z02qkjdwj3rvd0x5yxy7cjrd39cds3",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "788989771.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "788989771"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1d33vcqznqaeveam7h9vm8tqzskcy0cpp6cj8cs",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "100000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "100000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1djnh28gk83k9kewfcgn55ah3d7zdrpfy4uc7dg",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "164772926.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "164772926"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1d6xvxqdj63qjesmyd3pwwx8rm99x6w3rw5qzsy",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "104000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "104000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1duj8qwmvndk4d4pnsgv9wcxg0h7smktw3e7pxv",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "995191971.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "995191971"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1wrdly68fulk0t0za2gg0c5kvy0m8xxl0khkufa",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "362274865.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "362274865"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash10rr9zal9njpx0yl7xw373py98jsfu6z2lj9x9w",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "154390874.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "154390874"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash108mkzpvr8rjnnaxygqk9m5s678qs4wphgzsv35",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "180135267.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "180135267"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash10vvtht8ycyup5sj2tz3m80dnet8hge6la2r8lp",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "146270413.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "146270413"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash10jvwfyv02ct5cne3j8qkdz6j3p99t4jccx6xp7",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "131896362.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "131896362"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1sph2qudpf99tyhqhfjgc6tddv8yjsf4qsm93tg",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "663000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "663000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1smevzzaut7al86qjlv95e7wa93fwvl4my986uz",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "136000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "136000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1s753kmsfjt758j2uq5x2eyqhjk2srkze0h0r7f",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "745100000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "745100000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1385zfq3c3z2d8tqldn4u0g6vlqmdek2dd77jhh",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "150000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "150000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash13vnwqh883yvvcrh86lj934qusak5xy79twhef5",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "101000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "101000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1njtwcysqa5dm6urvzq0zsu5dz26c59mlksfarg",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "649787819.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "649787819"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash14f5t0t4hlrvyjfzmns0sk35jzwdncs9qppv0dr",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "475260495.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "475260495"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash142cl70a6rsp56x7myfz67g7m0f5x84w5nwcp8m",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "435000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "435000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash14wu5n29z47r6p9gqhkpzgmgwfxswlfy2tzs6gt",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "220547502.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "220547502"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash143fud07vcd772xrcfjs7glj5rh9sh6zyk2gs5q",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "144005422.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "144005422"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash14ez7s75ch67kvzc8c444kn9r4twarmrqtv0qqx",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "500000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "500000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1knas7u4gu0rhdtyxu4e8nykmhec2x3kwsxnfzq",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "300039097.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "300039097"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1ctdw4rrj9twwf9hp4uaw3sgm932nuxr6qydgau",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "100000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "100000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1cwvxafpqpy9rwg9pd020t4267hy2x4je58d6ty",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "440443007.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "440443007"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1c7gss2qzdkcln6p3m5340r0g6mzmdp2ucqe7s8",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "374716260.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "374716260"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1e5ewdtqneqdc5en98tc6qs7348m8fe2c2upxwa",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "165802560.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "165802560"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1m0d9xxy8ljzr4rmg7h60am7kh79rcyqnk0lrzr",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "500759035.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "500759035"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1m0sgf5rtrjzkfknzhcn5f58j43ajyejmhx8vna",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "134757189.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "134757189"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1mulrw7u87gt45ley5wjvve0qt5rq9zgstj84gw",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "100000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "100000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1uenvtjwczl2hy68l2kfu636quy9ds520gm5zq4",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "168000000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "168000000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1ax0pz5z55m7a8kf02r6d3w9uphqtmg3dcfmcjp",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "102000009.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "102000009"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1a44hw83p73mj00z4vjs07722y57wwhl8rs4nuv",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "126250000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "126250000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash17t0zud9z4xuas78xg48cvnvzrwudc3a0r84q59",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "735100000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "735100000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash17tanek3feqlzmyw0jaz684qvgyn76j9qq3dkpr",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "159182192.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "159182192"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1704ahv0j0jm48zc3hlvahuyrsecwhcd4natcym",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "735100000.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "735100000"
+      }
+    },
+    {
+      "delegation": {
+        "delegator_address": "akash1lvefwev78fvm0aefxdhayr8llkyhgjp5ma0yhm",
+        "validator_address": "akashvaloper1ax4c40gn3s74xxm75g6cmts3fw7rq64gq0kaj4",
+        "shares": "770134719.000000000000000000"
+      },
+      "balance": {
+        "denom": "uakt",
+        "amount": "770134719"
+      }
+    }
+  ],
+  "pagination": {
+    "next_key": null,
+    "total": "0"
+  }
+}
